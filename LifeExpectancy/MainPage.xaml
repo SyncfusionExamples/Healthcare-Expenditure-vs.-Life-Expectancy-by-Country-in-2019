@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:model="clr-namespace:LifeExpectancy"
+             x:Class="LifeExpectancy.MainPage">
+
+    <ContentPage.BindingContext>
+        <model:LifeExpectancyData/>
+    </ContentPage.BindingContext>
+
+    <chart:SfCartesianChart>
+
+        <chart:SfCartesianChart.Title>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="59*"/>
+                </Grid.ColumnDefinitions>
+                <VerticalStackLayout Background="#FF855FF2" Margin="10,35,0,15" Grid.Column="0" Grid.RowSpan="2"/>
+                <VerticalStackLayout Grid.Column="1" Margin="5">
+                    <Label Text="Healthcare Expenditure vs. Life Expectancy by Country in 2019" FontSize="Subtitle" FontFamily="centurygothic" Padding="0,30,5,5" HorizontalTextAlignment="Start"/>
+                    <Label Text="This graph depicts Healthcare Expenditure in dollars, which accounts for price differences between countries, as well as Life Expectancy at Birth." HorizontalTextAlignment="Start" FontSize="10" FontFamily="centurygothic" TextColor="Grey" Padding="0,0,0,10"/>
+                </VerticalStackLayout>
+            </Grid>
+        </chart:SfCartesianChart.Title>
+
+        <chart:SfCartesianChart.Resources>
+            <ResourceDictionary>
+                <model:PopulationValueConver x:Key="populationValueConverter"/>
+                <DataTemplate x:Key="template">
+                    <StackLayout>
+                        <Label Text="{Binding Item.Country,StringFormat='{0}'}" HorizontalTextAlignment="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontFamily="Helvetica" Margin="0,2,0,2" FontSize="12" Grid.Row="0" Padding="0,1"/>
+                        <BoxView Color="Gray" HeightRequest="1" HorizontalOptions="Fill" Margin="2,0,2,0"/>
+                        <Grid Padding="3">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Text="{Binding Item.HealthExpenditure,StringFormat='Health Expenditure  : ${0}'}" TextColor="white" FontFamily="Helvetica" FontSize="12"/>
+                            <Label Grid.Row="1" Text="{Binding Item.LifeExpectancy,StringFormat='Life Expectancy        : {0} years'}" TextColor="white" FontFamily="Helvetica" FontSize="12"/>
+                            <Label Grid.Row="2" Text="{Binding Item.Population,Converter={StaticResource populationValueConverter},StringFormat='Population               : {0}'}" TextColor="white" FontFamily="Helvetica" FontSize="12"/>
+                        </Grid>
+                    </StackLayout>
+                </DataTemplate>
+            </ResourceDictionary>
+        </chart:SfCartesianChart.Resources>
+
+        <chart:SfCartesianChart.Legend>
+            <chart:ChartLegend Placement="Top" ToggleSeriesVisibility="True"/>
+        </chart:SfCartesianChart.Legend>
+
+        <chart:SfCartesianChart.XAxes>
+            <chart:LogarithmicAxis Minimum="30" Maximum="10000" EdgeLabelsDrawingMode="Shift" ShowMajorGridLines="False">
+                <chart:LogarithmicAxis.Title>
+                    <chart:ChartAxisTitle Text="Healthcare Expenditure per capita(in current international $)" FontSize="16"/>
+                </chart:LogarithmicAxis.Title>
+                <chart:LogarithmicAxis.LabelStyle>
+                    <chart:ChartAxisLabelStyle LabelFormat="$0"/>
+                </chart:LogarithmicAxis.LabelStyle>
+                <chart:LogarithmicAxis.AxisLineStyle>
+                    <chart:ChartLineStyle StrokeWidth="0"/>
+                </chart:LogarithmicAxis.AxisLineStyle>
+                <chart:LogarithmicAxis.MajorTickStyle>
+                    <chart:ChartAxisTickStyle Stroke="#e6e6e6"/>
+                </chart:LogarithmicAxis.MajorTickStyle>
+            </chart:LogarithmicAxis>
+        </chart:SfCartesianChart.XAxes>
+
+        <chart:SfCartesianChart.YAxes>
+            <chart:NumericalAxis EdgeLabelsDrawingMode="Center" Maximum="86" Minimum="50">
+                <chart:NumericalAxis.Title>
+                    <chart:ChartAxisTitle Text="Life Expectancy at birth(Year)" FontSize="16"/>
+                </chart:NumericalAxis.Title>
+                <chart:NumericalAxis.AxisLineStyle>
+                    <chart:ChartLineStyle StrokeWidth="0"/>
+                </chart:NumericalAxis.AxisLineStyle>
+                <chart:NumericalAxis.MajorTickStyle>
+                    <chart:ChartAxisTickStyle Stroke="#e6e6e6"/>
+                </chart:NumericalAxis.MajorTickStyle>
+            </chart:NumericalAxis>
+        </chart:SfCartesianChart.YAxes>
+
+        <chart:BubbleSeries ItemsSource="{Binding AsianCountries}"
+                            XBindingPath="HealthExpenditure"
+                            YBindingPath="LifeExpectancy"
+                            SizeValuePath="Population"
+                            EnableTooltip="True"
+                            Label="Asia"
+                            TooltipTemplate="{StaticResource template}"/>
+
+        <chart:BubbleSeries ItemsSource="{Binding AfricanCountries}"
+                            XBindingPath="HealthExpenditure"
+                            YBindingPath="LifeExpectancy"
+                            SizeValuePath="Population"
+                            EnableTooltip="True"
+                            Label="Africa"
+                            TooltipTemplate="{StaticResource template}"/>
+
+        <chart:BubbleSeries ItemsSource="{Binding Europe}"
+                            XBindingPath="HealthExpenditure"
+                            YBindingPath="LifeExpectancy"
+                            SizeValuePath="Population"
+                            EnableTooltip="True"
+                            Label="Europe"
+                            TooltipTemplate="{StaticResource template}"/>
+
+        <chart:BubbleSeries ItemsSource="{Binding SouthAmerica}"
+                            XBindingPath="HealthExpenditure"
+                            YBindingPath="LifeExpectancy"
+                            SizeValuePath="Population"
+                            EnableTooltip="True"
+                            Label="South America "
+                            TooltipTemplate="{StaticResource template}"/>
+
+        <chart:BubbleSeries ItemsSource="{Binding NorthAmerica}"
+                            XBindingPath="HealthExpenditure"
+                            YBindingPath="LifeExpectancy"
+                            SizeValuePath="Population"
+                            EnableTooltip="True"
+                            Label="North America "
+                            TooltipTemplate="{StaticResource template}"/>
+
+        <chart:BubbleSeries ItemsSource="{Binding Oceania}"
+                            XBindingPath="HealthExpenditure"
+                            YBindingPath="LifeExpectancy"
+                            SizeValuePath="Population"
+                            EnableTooltip="True"
+                            Label="Oceania"
+                            TooltipTemplate="{StaticResource template}"/>
+
+        <chart:BubbleSeries ItemsSource="{Binding Others}"
+                            XBindingPath="HealthExpenditure"
+                            YBindingPath="LifeExpectancy"
+                            SizeValuePath="Population"
+                            EnableTooltip="True"
+                            TooltipTemplate="{StaticResource template}"
+                            IsVisibleOnLegend="False"/>
+    </chart:SfCartesianChart>
+
+</ContentPage>
