@@ -97,18 +97,6 @@ namespace LifeExpectancy
             }
         }
 
-        List<LifeExpectancyModel> others;
-        public List<LifeExpectancyModel> Others
-        {
-            get
-            {
-                return others;
-            }
-            set
-            {
-                others = value;
-            }
-        }
         public LifeExpectancyData()
         {
             AllCountriesData = new List<LifeExpectancyModel>(ReadCSV());
@@ -118,7 +106,6 @@ namespace LifeExpectancy
             SouthAmerica = AllCountriesData.Where(d => d.Continent == "South America").ToList();
             NorthAmerica = AllCountriesData.Where(d => d.Continent == "North America").ToList();
             Oceania = AllCountriesData.Where(d => d.Continent == "Oceania").ToList();
-            Others = AllCountriesData.Where(d => d.Continent == "").ToList();
         }
         public static IEnumerable<LifeExpectancyModel> ReadCSV()
         {
