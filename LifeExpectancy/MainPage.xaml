@@ -129,14 +129,6 @@
                             EnableTooltip="True"
                             Label="Oceania"
                             TooltipTemplate="{StaticResource template}"/>
-
-        <chart:BubbleSeries ItemsSource="{Binding Others}"
-                            XBindingPath="HealthExpenditure"
-                            YBindingPath="LifeExpectancy"
-                            SizeValuePath="Population"
-                            EnableTooltip="True"
-                            TooltipTemplate="{StaticResource template}"
-                            IsVisibleOnLegend="False"/>
     </chart:SfCartesianChart>
 
 </ContentPage>
