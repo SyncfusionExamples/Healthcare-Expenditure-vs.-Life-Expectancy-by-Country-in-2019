@@ -15,12 +15,12 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="59*"/>
+                    <ColumnDefinition Width="{OnPlatform Android=49*,WinUI=59*,MacCatalyst=59*,iOS=49*}"/>
                 </Grid.ColumnDefinitions>
                 <VerticalStackLayout Background="#FF855FF2" Margin="10,35,0,15" Grid.Column="0" Grid.RowSpan="2"/>
                 <VerticalStackLayout Grid.Column="1" Margin="5">
                     <Label Text="Healthcare Expenditure vs. Life Expectancy by Country in 2019" FontSize="Subtitle" FontFamily="centurygothic" Padding="0,30,5,5" HorizontalTextAlignment="Start"/>
-                    <Label Text="This graph depicts Healthcare Expenditure in dollars, which accounts for price differences between countries, as well as Life Expectancy at Birth." HorizontalTextAlignment="Start" FontSize="10" FontFamily="centurygothic" TextColor="Grey" Padding="0,0,0,10"/>
+                    <Label Text="This graph depicts Healthcare Expenditure in dollars, which accounts for price differences between countries, as well as Life Expectancy at Birth." HorizontalTextAlignment="Start" FontSize="{OnPlatform Android=10,WinUI=10,MacCatalyst=16,iOS=11}" FontFamily="centurygothic" TextColor="Grey" Padding="0,0,0,10"/>
                 </VerticalStackLayout>
             </Grid>
         </chart:SfCartesianChart.Title>
@@ -48,13 +48,13 @@
         </chart:SfCartesianChart.Resources>
 
         <chart:SfCartesianChart.Legend>
-            <chart:ChartLegend Placement="Top" ToggleSeriesVisibility="True"/>
+            <chart:ChartLegend ToggleSeriesVisibility="True"/>
         </chart:SfCartesianChart.Legend>
 
         <chart:SfCartesianChart.XAxes>
             <chart:LogarithmicAxis Minimum="30" Maximum="10000" EdgeLabelsDrawingMode="Shift" ShowMajorGridLines="False">
                 <chart:LogarithmicAxis.Title>
-                    <chart:ChartAxisTitle Text="Healthcare Expenditure per capita(in current international $)" FontSize="16"/>
+                    <chart:ChartAxisTitle Text="Healthcare Expenditure per capita(in current international $)" FontSize="{OnPlatform Android=16,WinUI=16,MacCatalyst=16,iOS=12}"/>
                 </chart:LogarithmicAxis.Title>
                 <chart:LogarithmicAxis.LabelStyle>
                     <chart:ChartAxisLabelStyle LabelFormat="$0"/>
@@ -69,9 +69,9 @@
         </chart:SfCartesianChart.XAxes>
 
         <chart:SfCartesianChart.YAxes>
-            <chart:NumericalAxis EdgeLabelsDrawingMode="Center" Maximum="86" Minimum="50">
+            <chart:NumericalAxis EdgeLabelsDrawingMode="Center" Maximum="86" Minimum="50" Interval="{OnPlatform Android=10,iOS=10,WinUI=5,MacCatalyst=5}">
                 <chart:NumericalAxis.Title>
-                    <chart:ChartAxisTitle Text="Life Expectancy at birth(Year)" FontSize="16"/>
+                    <chart:ChartAxisTitle Text="Life Expectancy at birth(Year)" FontSize="{OnPlatform Android=16,WinUI=16,MacCatalyst=16,iOS=12}"/>
                 </chart:NumericalAxis.Title>
                 <chart:NumericalAxis.AxisLineStyle>
                     <chart:ChartLineStyle StrokeWidth="0"/>
