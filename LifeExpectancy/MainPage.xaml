@@ -15,7 +15,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="{OnPlatform Android=59*,WinUI=59*,MacCatalyst=59*,iOS=49*}"/>
+                    <ColumnDefinition Width="{OnPlatform Android=49*,WinUI=59*,MacCatalyst=59*,iOS=49*}"/>
                 </Grid.ColumnDefinitions>
                 <VerticalStackLayout Background="#FF855FF2" Margin="10,35,0,15" Grid.Column="0" Grid.RowSpan="2"/>
                 <VerticalStackLayout Grid.Column="1" Margin="5">
