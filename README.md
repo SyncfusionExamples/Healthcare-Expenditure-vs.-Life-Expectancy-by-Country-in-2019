@@ -3,7 +3,8 @@ This article explains how to create the Bubble chart to visualize the Life Expec
 ## Bubble Chart
 The bubble chart is represented by closely packed circles, whose areas are proportional to the quantities. To render a bubble chart, create an instance of [BubbleSeries](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.BubbleSeries.html?tabs=tabid-1%2Ctabid-28), and add it to the [Series](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.SfCartesianChart.html#Syncfusion_Maui_Charts_SfCartesianChart_Series) collection property of [SfCartesianChart](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Charts.SfCartesianChart.html?tabs=tabid-1).
 
-<img width="960" alt="image" src="https://github.com/SyncfusionExamples/Healthcare-Expenditure-vs.-Life-Expectancy-by-Country-in-2019/assets/126753532/71408277-ea9b-40f1-a29d-b0fad62fa194">
+![image](https://github.com/SyncfusionExamples/Healthcare-Expenditure-vs.-Life-Expectancy-by-Country-in-2019/assets/126753532/c9303cd6-354b-44eb-8742-34267a9e2420)
+
 
 ### Customizing the chart appearence
 In this example, we have enhanced the appearence of our Bubble chart by customizing various elements, such as appearence of the axis elements, tooltip and title.
