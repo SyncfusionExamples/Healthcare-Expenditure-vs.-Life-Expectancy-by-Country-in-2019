@@ -16,4 +16,4 @@ We can customize axis elements, including the axis title, axis label style, line
 ### Tooltip Customization
 Using a tooltip, we can display the data in the data points. By including the Tooltiptemplate, we can display additional information about the datapoint.
 
-For the step by step procedure, refer to the [Life Expectancy Bubble chart Blog](https://github.com/SyncfusionExamples/Healthcare-Expenditure-vs.-Life-Expectancy-by-Country-in-2019).
+For the step by step procedure, refer to the [Life Expectancy Bubble chart Blog](https://www.syncfusion.com/blogs/post/dotnet-maui-bubble-chart-health.aspx).
